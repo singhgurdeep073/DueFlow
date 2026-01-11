@@ -4,8 +4,8 @@ import 'package:untitled/feature/prompt/ui/section_card.dart';
 import '../bloc/prompt_bloc.dart';
 import '../bloc/prompt_event.dart';
 import '../bloc/prompt_state.dart';
-import 'image_downloader.dart';
-import 'image_gallery_helper.dart';
+import 'gallery_helper.dart';
+
 
 class TextToImageTab extends StatelessWidget {
   const TextToImageTab({super.key});
@@ -107,22 +107,17 @@ class TextToImageTab extends StatelessWidget {
                             label: const Text("Save to Gallery"),
                             onPressed: () async {
                               try {
-                                final success =
-                                await ImageGalleryHelper.saveToGallery(state.image);
+                                await GalleryHelper.saveImage(state.image);
 
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      success
-                                          ? "Image saved to Gallery"
-                                          : "Failed to save image",
-                                    ),
+                                  const SnackBar(
+                                    content: Text("Image saved to Gallery"),
                                   ),
                                 );
-                              } catch (_) {
+                              } catch (e) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text("Permission denied"),
+                                    content: Text("Failed to save image"),
                                   ),
                                 );
                               }
