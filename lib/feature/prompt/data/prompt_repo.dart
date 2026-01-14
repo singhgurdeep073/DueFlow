@@ -22,11 +22,15 @@ class PromptRepo {
       options: Options(responseType: ResponseType.bytes),
     );
 
-    final bytes = Uint8List.fromList(response.data);
+    final bytes = response.data as List<int>;
     final dir = await getTemporaryDirectory();
-    final file = File("${dir.path}/image.png");
-    await file.writeAsBytes(bytes);
 
+    // 🔥 UNIQUE FILE NAME
+    final file = File(
+      "${dir.path}/image_${DateTime.now().millisecondsSinceEpoch}.png",
+    );
+
+    await file.writeAsBytes(bytes);
     return file;
   }
 

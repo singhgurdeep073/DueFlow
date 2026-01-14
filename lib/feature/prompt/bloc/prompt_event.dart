@@ -16,3 +16,4 @@ class GenerateImageToVideo extends PromptEvent {
     required this.image,
   });
 }
+class ClearHistory extends PromptEvent {}

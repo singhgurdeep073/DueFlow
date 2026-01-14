@@ -5,7 +5,8 @@
     <application
         android:label="Due Flow"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/dueflow">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

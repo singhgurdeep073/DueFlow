@@ -8,6 +8,7 @@ class PromptLoading extends PromptState {}
 
 class ImageSuccess extends PromptState {
   final File image;
+
   ImageSuccess(this.image);
 }
 
